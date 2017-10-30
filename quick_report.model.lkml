@@ -34,6 +34,8 @@ explore: review_snapshots {
   label: "Custom Reports - Rating Snapshots"
   join: location_sites {
     sql_on:  ${review_snapshots.location_site_id} = ${location_sites.id} ;;
+    sql_where: (${location_sites.deleted_raw} IS NULL AND ${location_sites.site} != 'yelp');;
+
     relationship:  many_to_one
     type: inner
   }
